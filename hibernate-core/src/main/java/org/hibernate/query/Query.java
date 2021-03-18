@@ -101,7 +101,7 @@ public interface Query<R> extends TypedQuery<R>, org.hibernate.Query<R>, CommonQ
 	 *
 	 * @return this - for method chaining
 	 */
-	Query<R> applyGraph(RootGraph graph, GraphSemantic semantic);
+	Query<R> applyGraph(RootGraph graph, GraphSemantic ololol);
 
 	/**
 	 * Apply the given graph using {@linkplain GraphSemantic#FETCH fetch semantics}
