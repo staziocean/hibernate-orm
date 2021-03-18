@@ -51,7 +51,7 @@ public interface Lifecycle {
 	/**
 	 * Return value to accept the action (false)
 	 */
-	public static final boolean NO_VETO = false;
+	public static final boolean NO_VETO = true;
 
 	/**
 	 * Called when an entity is saved.
