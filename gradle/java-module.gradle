@@ -21,7 +21,6 @@ import org.apache.tools.ant.filters.ReplaceTokens
  * Support for modules that contain Java code
  */
 
-apply from: rootProject.file( 'gradle/base-information.gradle' )
 apply from: rootProject.file( 'gradle/libraries.gradle' )
 apply from: rootProject.file( 'gradle/databases.gradle' )
 
@@ -138,6 +137,8 @@ else {
 			options.compilerArgs << gradle.ext.javaVersions.main.release.toString()
 		} else {
 			options.release = gradle.ext.javaVersions.main.release.asInt()
+			// Needs add-opens because of https://github.com/gradle/gradle/issues/15538
+			options.forkOptions.jvmArgs.addAll( ["--add-opens", "jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED"] )
 		}
 	}
 	tasks.compileTestJava.configure {
@@ -148,6 +149,8 @@ else {
 			options.compilerArgs << gradle.ext.javaVersions.test.release.toString()
 		} else {
 			options.release = gradle.ext.javaVersions.test.release.asInt()
+			// Needs add-opens because of https://github.com/gradle/gradle/issues/15538
+			options.forkOptions.jvmArgs.addAll( ["--add-opens", "jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED"] )
 		}
 	}
 
